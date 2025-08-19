@@ -45,7 +45,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        <div className="flex items-center justify-end md:justify-normal mr-9 md:mr-0 gap-4 md:gap-1 lg:gap-4 text-gray-700 mt-3 md:mt-0 w-full md:w-auto">
+        <div className="flex items-center justify-center md:justify-normal mr-9 md:mr-0 gap-4 md:gap-1 lg:gap-4 text-gray-700 mt-3 md:mt-0 w-full md:w-auto">
           <button
             onClick={changeLanguage}
             className="lg:text-lg text-lg md:text-sm font-medium hover:text-gray-500 flex items-center"
