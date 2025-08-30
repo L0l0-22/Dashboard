@@ -1,32 +1,61 @@
 /* eslint-disable no-undef */
-// tailwind.config.js
+/** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
+  darkMode: 'class',
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/flowbite/**/*.js"
+  ],  
+plugins: [
+  require('tailwind-scrollbar-hide'),
+  require('daisyui'),
+],
   theme: {
     extend: {
       colors: {
-        main: '#1E1E1E',
-        mainHover: '#333333',        
-        redS: '#d7050a',        
-      },
-      keyframes: {
-        slideIn: {
-          '0%': { transform: 'translateX(100%)' },
-          '100%': { transform: 'translateX(0)' },
-        },
-        slideOut: {
-          '0%': { transform: 'translateX(0)' },
-          '100%': { transform: 'translateX(-100%)' },
-        },
-      },
-      animation: {
-        slide: 'slideIn 3s ease-in-out infinite, slideOut 3s ease-in-out infinite',
-      },
-       fontFamily: {
-        poppins: ['Poppins', 'sans-serif'],
+        hoverMain: '#000033',
+        main: '#000066',
+        hoverSec: '#4CA9C7',
+        sec: "#65C1DD" , 
+        third:"#767FFF", 
+        forth: '#005BFF'
       },
     },
-  },
-  plugins: [require('tailwind-scrollbar-hide' ,'tailwindcss-rtl' )],
-
+    fontFamily: {
+      'body': [
+    'Inter', 
+    'ui-sans-serif', 
+    'system-ui', 
+    '-apple-system', 
+    'system-ui', 
+    'Segoe UI', 
+    'Roboto', 
+    'Helvetica Neue', 
+    'Arial', 
+    'Noto Sans', 
+    'sans-serif', 
+    'Apple Color Emoji', 
+    'Segoe UI Emoji', 
+    'Segoe UI Symbol', 
+    'Noto Color Emoji'
+  ],
+      'sans': [
+    'Inter', 
+    'ui-sans-serif', 
+    'system-ui', 
+    '-apple-system', 
+    'system-ui', 
+    'Segoe UI', 
+    'Roboto', 
+    'Helvetica Neue', 
+    'Arial', 
+    'Noto Sans', 
+    'sans-serif', 
+    'Apple Color Emoji', 
+    'Segoe UI Emoji', 
+    'Segoe UI Symbol', 
+    'Noto Color Emoji'
+  ]
+    }
+  }
 }

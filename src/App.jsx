@@ -1,48 +1,48 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
-import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import SecNavbar from './components/SecNavbar';
-import Footer from './components/Footer';
-import ProductDetails from './pages/ProductDetails';
-import Cart from './pages/Cart';
-import Checkout from './pages/Checkout';
-import Wishlist from './pages/Wishlist';
-import Search from './components/Search';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Electronics from './pages/Electronics';
-import Supermarket from './pages/Supermarket';
-import ScrollToTop from './components/ScrollToTop';
+import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import TeacherDash from './TeacherDashboard/TeacherDash';
+import QuizComponent from './Quiz';
+import TeachingTips from './TeachingTips';
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Login from './Login';
+import Cookies from "js-cookie";
+import { useState, useEffect } from 'react';
+import TeacherCourseDetails from './TeacherDashboard/Assesments/AssesmentDetails';
 
 function App() {
+  const [isLoggedIn, setIsLoggedIn] = useState(!!Cookies.get("isLoggedIn"));
   const location = useLocation();
-  const hideLayout = location.pathname === "/login" || location.pathname === "/register";
-  const { i18n } = useTranslation();
+
+  // Whenever cookies change (like after login/logout), update state
   useEffect(() => {
-    document.documentElement.lang = i18n.language;
-    document.documentElement.dir = i18n.language === "ar" ? "rtl" : "ltr";
-  }, [i18n.language]);
+    setIsLoggedIn(!!Cookies.get("isLoggedIn"));
+  }, [location]); 
+  // 👆 re-check login status on route change
 
   return (
     <div className="font-poppins">
-      {!hideLayout && <Navbar />}
-      {!hideLayout && <SecNavbar />}
-      <ScrollToTop />
+      <ToastContainer position="top-right" autoClose={5000} />
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/productdetails" element={<ProductDetails />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/wishlist" element={<Wishlist />} />
-        <Route path="/search" element={<Search />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/electronics" element={<Electronics />} />
-        <Route path="/supermarket" element={<Supermarket/>} />
+
+        {/* Protected routes */}
+        <Route
+          path="/"
+          element={Cookies.get("isLoggedIn") ? <TeacherDash /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/quiz"
+          element={isLoggedIn ? <QuizComponent /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/operationdetails"
+          element={isLoggedIn ? <TeacherCourseDetails /> : <Navigate to="/login" />}
+        />
+        <Route
+          path="/teachingtips"
+          element={isLoggedIn ? <TeachingTips /> : <Navigate to="/login" />}
+        />
       </Routes>
-      {!hideLayout && <Footer />}
     </div>
   );
 }
