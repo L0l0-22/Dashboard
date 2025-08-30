@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import loginimg from "../src/assets/login.jpg";
-import logo from "../src/assets/Logo.png";
+import loginimg from "./assets/login.jpg";
+import logo from "./assets/Logo.png";
 import { loginUser, userLogin } from "./api/auth";  // 👈 import both
 import { toast } from "react-toastify";
 import Cookies from "js-cookie";

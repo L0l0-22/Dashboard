@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../src/assets/Logoonly.png"; 
+import logo from "./assets/Logoonly.png"; 
 
 export default function Loading() {
 return (
