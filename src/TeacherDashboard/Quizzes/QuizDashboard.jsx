@@ -147,7 +147,6 @@ export default function Quizzes() {
                   Add Questions
                 </button>
                 <button
-                  onClick={() => navigate(`/quiz`)}
                   className="hover:text-main border hover:border-main rounded-lg px-3 py-1 text-sm bg-main hover:bg-transparent text-white"
                 >
                   View Quiz

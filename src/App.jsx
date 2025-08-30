@@ -30,10 +30,10 @@ function App() {
           path="/"
           element={Cookies.get("isLoggedIn") ? <TeacherDash /> : <Navigate to="/login" />}
         />
-        <Route
+        {/* <Route
           path="/quiz"
           element={isLoggedIn ? <QuizComponent /> : <Navigate to="/login" />}
-        />
+        /> */}
         <Route
           path="/operationdetails"
           element={isLoggedIn ? <TeacherCourseDetails /> : <Navigate to="/login" />}
