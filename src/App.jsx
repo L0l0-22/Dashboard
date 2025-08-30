@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import TeacherDash from './TeacherDashboard/TeacherDash';
-import QuizComponent from './Quiz';
 import TeachingTips from './TeachingTips';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -30,10 +29,6 @@ function App() {
           path="/"
           element={Cookies.get("isLoggedIn") ? <TeacherDash /> : <Navigate to="/login" />}
         />
-        {/* <Route
-          path="/quiz"
-          element={isLoggedIn ? <QuizComponent /> : <Navigate to="/login" />}
-        /> */}
         <Route
           path="/operationdetails"
           element={isLoggedIn ? <TeacherCourseDetails /> : <Navigate to="/login" />}
